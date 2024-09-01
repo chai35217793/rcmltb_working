@@ -33,13 +33,10 @@ from bot.helper.mirror_leech_utils.download_utils.rclone_leech import RcloneLeec
 from bot.modules.tasks_listener import TaskListener
 from bot.modules.mirror_leech import mirror_leech
 
-
 listener_dict = {}
-
 
 async def handle_leech(client, message):
     await leech(client, message)
-
 
 async def leech(client, message):
     user_id = message.from_user.id
@@ -65,7 +62,6 @@ async def leech(client, message):
             )
         else:
             await sendMessage("Reply to a link/file", message)
-
 
 async def leech_menu_cb(_, callback_query):
     query = callback_query
@@ -127,7 +123,6 @@ async def leech_menu_cb(_, callback_query):
     else:
         await message.delete()
 
-
 async def next_page_leech(_, callback_query):
     query = callback_query
     data = query.data
@@ -175,7 +170,6 @@ async def next_page_leech(_, callback_query):
     msg = f"Select folder or file that you want to leech\n\n<b>Path:</b><code>{leech_remote}:{base_dir}</code>"
     await editMessage(msg, message, reply_markup=buttons.build_menu(1))
 
-
 async def selection_callback(client, query):
     cmd = query.data.split("^")
     message = query.message
@@ -215,7 +209,6 @@ async def selection_callback(client, query):
     else:
         await query.answer()
         await message.delete()
-
 
 bot.add_handler(
     MessageHandler(
