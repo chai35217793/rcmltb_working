@@ -1,7 +1,6 @@
 from pyrogram.filters import create
 from bot import OWNER_ID, user_data
 
-
 class CustomFilters:
     async def custom_owner_filter(self, client, update):
         uid = update.from_user.id or update.sender_chat.id
@@ -33,4 +32,3 @@ class CustomFilters:
         return bool(uid == OWNER_ID or uid in user_data and user_data[uid].get("is_sudo"))
 
     sudo_filter = create(custom_sudo_filter)
-
